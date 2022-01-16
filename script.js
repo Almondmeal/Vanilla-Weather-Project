@@ -35,11 +35,21 @@ iconElement.setAttribute("src",  `http://openweathermap.org/img/wn/${response.da
 
 }
 
-
-let city ="miami";
+function search (city){
 let apiKey="a34cc778ea5bd61a888e8521250c7678";
 let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-
-console.log(apiUrl);
 axios.get(apiUrl).then(displayTemperature);
+}
+
+
+function handleSubmit(event){
+    event.preventDefault();
+    let cityInputElement=document.querySelector("#city-input");
+    search (cityInputElement.value);
+    
+}
+
+
+
+let form =document.querySelector("#search-form");
+form.addEventListener ("submit", handleSubmit);
